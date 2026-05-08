@@ -34,32 +34,39 @@
         </div>
     </nav>
 
-    <header class="max-w-7xl mx-auto px-8 pt-12 pb-24 grid md:grid-cols-2 gap-12 items-center">
-        <div class="space-y-8">
-            <span class="inline-block px-4 py-1 rounded-full border border-blue-200 text-blue-600 text-sm font-medium bg-blue-50">
-                📍 Delivering across Asansol, West Bengal
-            </span>
-            <h1 class="text-5xl md:text-6xl font-bold tracking-tight text-gray-900 mb-4 leading-none">
-                Sweet treats, baked with love.
-            </h1>
-            
-            <p class="text-base md:text-lg text-gray-600 mb-6 max-w-lg leading-relaxed">
-                KrazzyCakes is a home bakery crafting custom cakes, cupcakes, and cookies for every occasion. Small-batch, big flavor.
-            </p>
-            
-            <div class="flex flex-wrap gap-4">
-                <a href="#order" class="bg-black text-white px-8 py-4 rounded-xl font-semibold hover:bg-gray-800 transition">
-                    Place an order
-                </a>
-                <a href="#menu" class="bg-gray-100 text-gray-900 px-8 py-4 rounded-xl font-semibold hover:bg-gray-200 transition">
-                    See the menu
-                </a>
+    <section class="max-w-7xl mx-auto px-8 pt-8 md:pt-16 pb-20">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="flex flex-col justify-center">
+                <div class="mb-6">
+                    <span class="inline-block px-4 py-1 rounded-full border border-blue-200 text-blue-600 text-xs md:text-sm font-medium bg-blue-50">
+                        📍 Delivering across Asansol, West Bengal
+                    </span>
+                </div>
+    
+                <h1 class="text-6xl md:text-8xl font-bold tracking-tight text-gray-900 mb-6 leading-[1.05]">
+                    Sweet treats, <br class="hidden md:block"> baked with love.
+                </h1>
+                
+                <p class="text-lg md:text-xl text-gray-600 mb-10 max-w-lg leading-relaxed">
+                    KrazzyCakes is a home bakery crafting custom cakes, cupcakes, and cookies for every occasion. Small-batch, big flavor.
+                </p>
+                
+                <div class="flex flex-wrap gap-4">
+                    <a href="#order" class="bg-black text-white px-8 py-4 rounded-xl font-semibold hover:bg-gray-800 transition shadow-lg">
+                        Place an order
+                    </a>
+                    <a href="#menu" class="bg-gray-100 text-gray-900 px-8 py-4 rounded-xl font-semibold hover:bg-gray-200 transition">
+                        See the menu
+                    </a>
+                </div>
+            </div>
+    
+            <div class="relative">
+                <img src="cake1.jpg" alt="Custom Birthday Cake" 
+                     class="rounded-[2.5rem] w-full h-[500px] md:h-[650px] object-cover shadow-2xl">
             </div>
         </div>
-        <div class="relative">
-            <img src="cake1.jpg" alt="Custom Birthday Cake" class="rounded-[2.5rem] w-full h-[500px] object-cover shadow-sm">
-        </div>
-    </header>
+    </section>
 
     <section id="menu" class="max-w-7xl mx-auto px-8 py-20 border-t border-gray-100">
         <div class="mb-12">
@@ -165,51 +172,48 @@
         </div>
     </section>
 
-    <section id="order" class="max-w-4xl mx-auto px-8 pt-20 pb-10 border-t border-gray-100">
-        <div class="mb-10">
-            <h2 class="text-4xl font-bold mb-2">Place an order</h2>
-            <p class="text-gray-500">Tell us what you're dreaming of and we'll get back within 6 hours.</p>
-        </div>
+    <section id="order" class="max-w-4xl mx-auto px-8 pt-10 pb-20 border-t border-gray-100">
+    <div class="mb-8">
+        <h2 class="text-3xl font-bold mb-2">Place an order</h2>
+        <p class="text-gray-500 text-sm">Tell us what you're dreaming of and we'll get back within 6 hours.</p>
+    </div>
+    
+    <form id="order-form" action="https://formspree.io/f/your-id" method="POST" class="space-y-4 max-w-2xl">
+        <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
         
-        <form id="order-form" action="https://formspree.io/f/mbdwavqo" method="POST" class="space-y-6 max-w-2xl">
+        <div class="grid md:grid-cols-2 gap-4">
             <div>
-                <label class="block text-sm font-semibold mb-2">Your name</label>
-                <input type="text" placeholder="John Doe" class="w-full bg-gray-100 border-none rounded-lg p-4 focus:ring-2 focus:ring-black outline-none transition">
+                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">Your name</label>
+                <input type="text" name="name" placeholder="John Doe" required 
+                    class="w-full bg-gray-50 border border-gray-100 rounded-lg p-3 text-sm focus:ring-2 focus:ring-black outline-none transition">
             </div>
             <div>
-                <label class="block text-sm font-semibold mb-2">Phone number</label>
-                <input 
-                    type="tel" 
-                    name="phone" 
-                    placeholder="9876543210" 
-                    required 
-                    pattern="[0-9]{10}" 
-                    title="Please enter a valid 10-digit phone number (numbers only)"
-                    class="w-full bg-gray-100 border-none rounded-lg p-4 focus:ring-2 focus:ring-black outline-none transition"
-                >
+                <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">Phone number</label>
+                <input type="tel" name="phone" placeholder="9876543210" required pattern="[0-9]{10}"
+                    class="w-full bg-gray-50 border border-gray-100 rounded-lg p-3 text-sm focus:ring-2 focus:ring-black outline-none transition">
             </div>
-            <div>
-                <label class="block text-sm font-semibold mb-2">When do you need it?</label>
-                <input 
-                    type="date" 
-                    name="date" 
-                    required 
-                    class="w-full bg-gray-100 border-none rounded-lg p-4 focus:ring-2 focus:ring-black outline-none transition cursor-pointer"
-                >
-            </div>
-            <div>
-                <label class="block text-sm font-semibold mb-2">What would you like to order?</label>
-                <textarea rows="6" placeholder="Occasion, flavors and any other queries" class="w-full bg-gray-100 border-none rounded-lg p-4 focus:ring-2 focus:ring-black outline-none transition"></textarea>
-                <p class="text-xs text-gray-400 mt-2">Occasion, flavors, and any inspiration.</p>
-            </div>
-            <p class="text-xs text-gray-500 mb-4">
-                * Note: Currently accepting orders for delivery within <strong>Asansol city limits</strong> only.
-            </p>
-            <button type="submit" class="bg-black text-white px-8 py-4 rounded-xl font-semibold hover:bg-gray-800 transition">
-                Send request
+        </div>
+
+        <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">When do you need it?</label>
+            <input type="date" name="date" required 
+                class="w-full bg-gray-50 border border-gray-100 rounded-lg p-3 text-sm focus:ring-2 focus:ring-black outline-none transition cursor-pointer">
+        </div>
+
+        <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1">What would you like to order?</label>
+            <textarea name="message" rows="3" placeholder="Occasion, flavors, and any other queries" required 
+                class="w-full bg-gray-50 border border-gray-100 rounded-lg p-3 text-sm focus:ring-2 focus:ring-black outline-none transition resize-none"></textarea>
+        </div>
+
+        <div class="pt-2">
+            <p class="text-[10px] text-gray-400 mb-4">* Currently accepting orders for delivery within Asansol city limits only.</p>
+            <button type="submit" class="w-full md:w-auto bg-black text-white px-10 py-3 rounded-lg font-bold text-sm hover:bg-gray-800 transition shadow-lg">
+                Request a Quote
             </button>
-        </form>
-    </section>
+        </div>
+    </form>
+</section>
 
     <footer class="border-t border-gray-100 py-12 text-center text-gray-500 text-sm">
         <p>© 2026 KrazzyCakes — Baked with love at home.</p>
