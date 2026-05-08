@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KrazzyCakes | Custom Bakery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+        .faq-item.active .faq-content { max-height: 100px; }
+        .faq-item.active .faq-icon { transform: rotate(45deg); }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+
+    <nav class="flex items-center justify-between px-8 py-6 max-w-7xl mx-auto">
+        <div class="flex items-center gap-2">
+            <span class="text-xl">🧁</span>
+            <span class="font-bold text-xl tracking-tight">KrazzyCakes</span>
+        </div>
+        <div class="hidden md:flex items-center gap-8 font-medium">
+            <a href="#menu" class="hover:text-gray-600">Menu</a>
+            <a href="#about" class="hover:text-gray-600">About</a>
+            <a href="#faq" class="hover:text-gray-600">FAQ</a>
+            <a href="#order" class="bg-black text-white px-6 py-2.5 rounded-lg hover:bg-gray-800 transition">Order Now</a>
+        </div>
+    </nav>
+
+    <header class="max-w-7xl mx-auto px-8 pt-12 pb-24 grid md:grid-cols-2 gap-12 items-center">
+        <div class="space-y-8">
+            <span class="inline-block px-4 py-1 rounded-full border border-blue-200 text-blue-600 text-sm font-medium bg-blue-50">Baked fresh at home</span>
+            <h1 class="text-6xl md:text-8xl font-bold leading-[1.1] tracking-tight">Sweet treats,<br>baked with<br>love.</h1>
+            <p class="text-lg text-gray-600 max-w-md leading-relaxed">KrazzyCakes is a home bakery crafting custom cakes, cupcakes, and cookies for every occasion. Small-batch, big flavor.</p>
+            <div class="flex gap-4 pt-4">
+                <a href="#order" class="bg-black text-white px-8 py-4 rounded-xl font-semibold hover:bg-gray-800 transition text-center">Place an order</a>
+                <a href="#menu" class="bg-gray-100 text-gray-900 px-8 py-4 rounded-xl font-semibold hover:bg-gray-200 transition text-center">See the menu</a>
+            </div>
+        </div>
+        <div class="relative">
+            <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=1200&auto=format&fit=crop" alt="Hero Bakery" class="rounded-[2.5rem] w-full h-[500px] object-cover shadow-sm">
+        </div>
+    </header>
+
+    <section id="menu" class="max-w-7xl mx-auto px-8 py-20 border-t border-gray-100">
+        <div class="mb-12">
+            <h2 class="text-3xl font-bold mb-2">Our menu</h2>
+            <p class="text-gray-500">A taste of what we bake. Custom requests always welcome.</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="group border border-gray-200 rounded-3xl overflow-hidden hover:shadow-md transition duration-300">
+                <img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?q=80&w=800&auto=format&fit=crop" class="w-full h-64 object-cover">
+                <div class="p-6 space-y-3">
+                    <h3 class="text-xl font-bold">Custom Celebration Cakes</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Tiered cakes for birthdays, weddings, and special moments. Made-to-order with your flavors and colors.</p>
+                    <p class="font-bold pt-2">From $45</p>
+                </div>
+            </div>
+            <div class="group border border-gray-200 rounded-3xl overflow-hidden hover:shadow-md transition duration-300">
+                <img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?q=80&w=800&auto=format&fit=crop" class="w-full h-64 object-cover">
+                <div class="p-6 space-y-3">
+                    <h3 class="text-xl font-bold">Gourmet Cupcakes</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Soft, fluffy cupcakes topped with silky buttercream. Available by the half-dozen or dozen.</p>
+                    <p class="font-bold pt-2">From $24/dozen</p>
+                </div>
+            </div>
+            <div class="group border border-gray-200 rounded-3xl overflow-hidden hover:shadow-md transition duration-300">
+                <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?q=80&w=800&auto=format&fit=crop" class="w-full h-64 object-cover">
+                <div class="p-6 space-y-3">
+                    <h3 class="text-xl font-bold">Iced Sugar Cookies</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Hand-iced sugar cookies in custom shapes and themes. Perfect for parties and party favors.</p>
+                    <p class="font-bold pt-2">From $30/dozen</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="bg-gray-50 py-24">
+        <div class="max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-16 items-start">
+            <div class="space-y-6">
+                <h2 class="text-4xl font-bold">About KrazzyCakes</h2>
+                <p class="text-gray-600 leading-relaxed text-lg">Hi, I'm the baker behind KrazzyCakes! What started as baking for friends and family has grown into a cozy home bakery serving our community.</p>
+                <p class="text-gray-600 leading-relaxed text-lg">Every cake, cupcake, and cookie is made to order using quality ingredients, real butter, and a whole lot of love.</p>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-white p-8 rounded-2xl shadow-sm">
+                    <div class="text-3xl font-bold">500+</div>
+                    <div class="text-gray-500 text-sm mt-1">Happy orders</div>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm">
+                    <div class="text-3xl font-bold">50+</div>
+                    <div class="text-gray-500 text-sm mt-1">Custom designs</div>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm">
+                    <div class="text-3xl font-bold">100%</div>
+                    <div class="text-gray-500 text-sm mt-1">Made fresh</div>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm">
+                    <div class="text-3xl font-bold">24h</div>
+                    <div class="text-gray-500 text-sm mt-1">Avg. reply time</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="max-w-4xl mx-auto px-8 py-24">
+        <h2 class="text-4xl font-bold mb-12">Frequently asked</h2>
+        <div class="divide-y divide-gray-200 border-t border-gray-200">
+            <div class="faq-item py-6 cursor-pointer group" onclick="this.classList.toggle('active')">
+                <div class="flex justify-between items-center font-medium text-xl">
+                    <span>How far in advance should I order?</span>
+                    <span class="faq-icon transition-transform duration-300 text-2xl">+</span>
+                </div>
+                <div class="faq-content text-gray-500 mt-4">We recommend booking 2 weeks in advance.</div>
+            </div>
+            <div class="faq-item py-6 cursor-pointer group" onclick="this.classList.toggle('active')">
+                <div class="flex justify-between items-center font-medium text-xl">
+                    <span>Do you offer delivery?</span>
+                    <span class="faq-icon transition-transform duration-300 text-2xl">+</span>
+                </div>
+                <div class="faq-content text-gray-500 mt-4">Yes, we deliver within 15 miles.</div>
+            </div>
+            <div class="faq-item py-6 cursor-pointer group" onclick="this.classList.toggle('active')">
+                <div class="flex justify-between items-center font-medium text-xl">
+                    <span>Can you accommodate allergies?</span>
+                    <span class="faq-icon transition-transform duration-300 text-2xl">+</span>
+                </div>
+                <div class="faq-content text-gray-500 mt-4">Please contact us for specific dietary needs.</div>
+            </div>
+            <div class="faq-item py-6 cursor-pointer group" onclick="this.classList.toggle('active')">
+                <div class="flex justify-between items-center font-medium text-xl">
+                    <span>How do I pay?</span>
+                    <span class="faq-icon transition-transform duration-300 text-2xl">+</span>
+                </div>
+                <div class="faq-content text-gray-500 mt-4">We accept credit cards, Venmo, and PayPal.</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="order" class="max-w-4xl mx-auto px-8 py-24 border-t border-gray-100">
+        <div class="mb-10">
+            <h2 class="text-4xl font-bold mb-2">Place an order</h2>
+            <p class="text-gray-500">Tell us what you're dreaming of and we'll get back within 24 hours.</p>
+        </div>
+        
+        <form class="space-y-6 max-w-2xl">
+            <div>
+                <label class="block text-sm font-semibold mb-2">Your name</label>
+                <input type="text" class="w-full bg-gray-100 border-none rounded-lg p-4 focus:ring-2 focus:ring-black outline-none transition">
+            </div>
+            <div>
+                <label class="block text-sm font-semibold mb-2">Email</label>
+                <input type="email" class="w-full bg-gray-100 border-none rounded-lg p-4 focus:ring-2 focus:ring-black outline-none transition">
+            </div>
+            <div>
+                <label class="block text-sm font-semibold mb-2">What would you like?</label>
+                <textarea rows="6" class="w-full bg-gray-100 border-none rounded-lg p-4 focus:ring-2 focus:ring-black outline-none transition"></textarea>
+                <p class="text-xs text-gray-400 mt-2">Occasion, flavors, date, and any inspiration.</p>
+            </div>
+            <button type="submit" class="bg-black text-white px-8 py-4 rounded-xl font-semibold hover:bg-gray-800 transition">
+                Send request
+            </button>
+        </form>
+    </section>
+
+    <footer class="border-t border-gray-100 py-12 text-center text-gray-500 text-sm">
+        <p>© 2026 KrazzyCakes — Baked with love at home.</p>
+    </footer>
+
+</body>
+</html>
