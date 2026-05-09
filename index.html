@@ -12,48 +12,17 @@
         .faq-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
         .faq-item.active .faq-content { max-height: 100px; }
         .faq-item.active .faq-icon { transform: rotate(45deg); }
-        /* Hide Google Translate top bar */
-        .goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon { display: none !important; }
-        body { top: 0px !important; }
-        
-        /* Prevent scrolling while modal is open */
-        #lang-selector-modal:not([style*="display: none"]) ~ * {
-            filter: blur(4px);
-            pointer-events: none;
-        }
-        /* Kill the Google Toolbar and fix the logo overlap */
-        .goog-te-banner-frame.skiptranslate { display: none !important; }
-        body { top: 0px !important; position: static !important; }
-        .goog-te-gadget { display: none !important; }
-        .goog-tooltip { display: none !important; }
-        .goog-tooltip:hover { display: none !important; }
-        .goog-text-highlight { background-color: transparent !important; box-shadow: none !important; }
     </style>
 </head>
 <body class="bg-white text-gray-900">
-    <div id="lang-selector-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-md">
-        <div class="bg-white p-10 rounded-[3rem] max-w-sm w-full mx-4 shadow-2xl text-center border border-gray-100">
-            <div class="text-5xl mb-6">🍰</div>
-            <h2 class="text-3xl font-bold mb-2 text-gray-900">Welcome</h2>
-            <p class="text-gray-500 mb-8 leading-relaxed">Choose your preferred language<br><span class="text-hindi text-lg">अपनी भाषा चुनें</span></p>
-            
-            <div class="flex flex-col gap-4">
-                <button onclick="selectLanguage('en')" class="w-full bg-black text-white py-4 rounded-xl font-bold hover:bg-gray-800 transition transform active:scale-95">
-                    English
-                </button>
-                
-                <button onclick="selectLanguage('hi')" class="w-full bg-blue-50 text-blue-600 py-4 rounded-xl font-bold hover:bg-blue-100 transition transform active:scale-95 border border-blue-100">
-                    हिन्दी (Hindi)
-                </button>
-            </div>
-        </div>
-    </div>
     
-    <div id="google_translate_element" style="display:none"></div>
     <nav class="max-w-7xl mx-auto px-8 py-6 flex items-center justify-between">
-        <a href="./" class="notranslate flex items-center gap-3 ...">
-            <span>🧁</span>
-            <span style="font-family: 'Pacifico', cursive;">KrazzyCakes</span>
+        <a href="./" class="flex items-center gap-3 hover:opacity-80 transition group">
+            <span class="text-4xl md:text-5xl">🧁</span>
+            <span style="font-family: 'Pacifico', cursive;" 
+                  class="text-4xl md:text-5xl text-gray-950 leading-none">
+                KrazzyCakes
+            </span>
         </a>
     
         <div class="hidden md:flex items-center gap-8">
@@ -273,43 +242,6 @@
             }
             // ------------------------------------------
         });
-        //--Google translator
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'hi,en',
-                autoDisplay: false // This prevents the ugly toolbar from popping up
-            }, 'google_translate_element');
-        }
-        
-        function selectLanguage(lang) {
-            // Hide the modal immediately
-            document.getElementById('lang-selector-modal').style.display = 'none';
-            localStorage.setItem('krazzy_lang_pref', lang);
-        
-            if (lang === 'hi') {
-                const googleSelect = document.querySelector('.goog-te-combo');
-                if (googleSelect) {
-                    googleSelect.value = 'hi';
-                    googleSelect.dispatchEvent(new Event('change'));
-                } else {
-                    // If Google hasn't loaded yet, try again in half a second
-                    setTimeout(() => selectLanguage('hi'), 500);
-                }
-            }
-        }
-        
-        // Check on load
-        window.addEventListener('load', () => {
-            const savedLang = localStorage.getItem('krazzy_lang_pref');
-            if (!savedLang) {
-                // Show modal if it's the first visit
-                document.getElementById('lang-selector-modal').style.display = 'flex';
-            } else if (savedLang === 'hi') {
-                // Apply Hindi silently if they already chose it
-                setTimeout(() => selectLanguage('hi'), 1000);
-            }
-        });
     </script>
     <a href="https://wa.me/919647081475" target="_blank" 
        class="fixed bottom-8 right-8 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center group">
@@ -318,6 +250,5 @@
         </svg>
         <span class="absolute right-full mr-3 px-3 py-1 bg-black text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Chat on WhatsApp</span>
     </a>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
