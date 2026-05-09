@@ -262,6 +262,19 @@
             ids.forEach(id => { if(document.getElementById(id)) document.getElementById(id).innerText = data[id.replace(/-/g, '_')]; });
             document.getElementById('hero-title').innerHTML = data.hero_title;
     
+            // Target the hero buttons specifically for font resizing
+            const btnPlace = document.getElementById('btn-place');
+            const btnSee = document.getElementById('btn-see');
+            if (lang === 'hi') {
+                // Hindi: Increase size (text-xl) and keep it bold
+                btnPlace.classList.replace('text-semibold', 'text-bold');
+                btnPlace.classList.add('text-xl');
+                btnSee.classList.add('text-xl');
+            } else {
+                // English: Reset to standard size
+                btnPlace.classList.remove('text-xl');
+                btnSee.classList.remove('text-xl');
+            }
             // Toggle UI Highlight
             const enBtn = document.getElementById('toggle-en');
             const hiBtn = document.getElementById('toggle-hi');
