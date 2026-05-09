@@ -21,6 +21,13 @@
             filter: blur(4px);
             pointer-events: none;
         }
+        /* Kill the Google Toolbar and fix the logo overlap */
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0px !important; position: static !important; }
+        .goog-te-gadget { display: none !important; }
+        .goog-tooltip { display: none !important; }
+        .goog-tooltip:hover { display: none !important; }
+        .goog-text-highlight { background-color: transparent !important; box-shadow: none !important; }
     </style>
 </head>
 <body class="bg-white text-gray-900">
@@ -44,12 +51,9 @@
     
     <div id="google_translate_element" style="display:none"></div>
     <nav class="max-w-7xl mx-auto px-8 py-6 flex items-center justify-between">
-        <a href="./" class="flex items-center gap-3 hover:opacity-80 transition group">
-            <span class="text-4xl md:text-5xl">🧁</span>
-            <span style="font-family: 'Pacifico', cursive;" 
-                  class="text-4xl md:text-5xl text-gray-950 leading-none">
-                KrazzyCakes
-            </span>
+        <a href="./" class="notranslate flex items-center gap-3 ...">
+            <span>🧁</span>
+            <span style="font-family: 'Pacifico', cursive;">KrazzyCakes</span>
         </a>
     
         <div class="hidden md:flex items-center gap-8">
@@ -269,40 +273,41 @@
             }
             // ------------------------------------------
         });
-        // 1. Initialize Google Translate
+        //--Google translator
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
                 pageLanguage: 'en',
                 includedLanguages: 'hi,en',
-                autoDisplay: false
+                autoDisplay: false // This prevents the ugly toolbar from popping up
             }, 'google_translate_element');
         }
         
-        // 2. Function to handle the selection
         function selectLanguage(lang) {
-            const modal = document.getElementById('lang-selector-modal');
-            const googleSelect = document.querySelector('.goog-te-combo');
-        
-            if (lang === 'hi' && googleSelect) {
-                googleSelect.value = 'hi';
-                googleSelect.dispatchEvent(new Event('change'));
-            } else if (lang === 'en' && googleSelect) {
-                googleSelect.value = 'en';
-                googleSelect.dispatchEvent(new Event('change'));
-            }
-        
-            // Hide the modal and remember the choice
-            modal.style.display = 'none';
+            // Hide the modal immediately
+            document.getElementById('lang-selector-modal').style.display = 'none';
             localStorage.setItem('krazzy_lang_pref', lang);
+        
+            if (lang === 'hi') {
+                const googleSelect = document.querySelector('.goog-te-combo');
+                if (googleSelect) {
+                    googleSelect.value = 'hi';
+                    googleSelect.dispatchEvent(new Event('change'));
+                } else {
+                    // If Google hasn't loaded yet, try again in half a second
+                    setTimeout(() => selectLanguage('hi'), 500);
+                }
+            }
         }
         
-        // 3. Check for existing preference on load
-        window.addEventListener('DOMContentLoaded', () => {
+        // Check on load
+        window.addEventListener('load', () => {
             const savedLang = localStorage.getItem('krazzy_lang_pref');
-            if (savedLang) {
-                // If they already chose, hide modal and apply immediately
-                document.getElementById('lang-selector-modal').style.display = 'none';
-                setTimeout(() => selectLanguage(savedLang), 1000); // Small delay for Google to load
+            if (!savedLang) {
+                // Show modal if it's the first visit
+                document.getElementById('lang-selector-modal').style.display = 'flex';
+            } else if (savedLang === 'hi') {
+                // Apply Hindi silently if they already chose it
+                setTimeout(() => selectLanguage('hi'), 1000);
             }
         });
     </script>
