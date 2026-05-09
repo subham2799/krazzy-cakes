@@ -32,15 +32,17 @@
             <span style="font-family: 'Pacifico', cursive;" class="text-4xl md:text-5xl text-gray-950 leading-none">KrazzyCakes</span>
         </a>
     
-        <div class="hidden md:flex items-center gap-8">
-            <div class="flex items-center bg-gray-100 rounded-lg p-1 text-xs font-bold border border-gray-200 mr-2">
-                <button onclick="setLanguage('en')" id="toggle-en" class="px-3 py-1.5 rounded-md transition duration-200">EN</button>
-                <button onclick="setLanguage('hi')" id="toggle-hi" class="px-3 py-1.5 rounded-md transition duration-200">हिन्दी</button>
+        <div class="flex items-center gap-4">
+            <div class="flex items-center bg-gray-100 rounded-lg p-1 text-[10px] md:text-xs font-bold border border-gray-200">
+                <button onclick="setLanguage('en')" id="toggle-en" class="px-2 md:px-3 py-1.5 rounded-md transition duration-200">EN</button>
+                <button onclick="setLanguage('hi')" id="toggle-hi" class="px-2 md:px-3 py-1.5 rounded-md transition duration-200">हिन्दी</button>
             </div>
-            
-            <a href="#menu" id="nav-menu" class="text-lg font-medium text-gray-600 hover:text-black transition">Menu</a>
-            <a href="#about" id="nav-about" class="text-lg font-medium text-gray-600 hover:text-black transition">About</a>
-            <a href="#order" id="nav-order" class="bg-black text-white px-8 py-3 rounded-xl font-bold hover:bg-gray-800 transition shadow-sm">Order Now</a>
+    
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#menu" id="nav-menu" class="text-lg font-medium text-gray-600 hover:text-black transition">Menu</a>
+                <a href="#about" id="nav-about" class="text-lg font-medium text-gray-600 hover:text-black transition">About</a>
+                <a href="#order" id="nav-order" class="bg-black text-white px-8 py-3 rounded-xl font-bold hover:bg-gray-800 transition shadow-sm">Order Now</a>
+            </div>
         </div>
     </nav>
     
@@ -270,46 +272,46 @@
     
         function setLanguage(lang) {
             localStorage.setItem('krazzy_lang', lang);
-            document.getElementById('lang-modal').style.display = 'none';
+            
+            // Explicitly hide modal for mobile
+            const modal = document.getElementById('lang-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.style.display = 'none';
+            }
             
             const data = translations[lang];
-            // Apply text swaps
-            // Updated ID list to include everything
-            const ids = [
-                'nav-menu', 'nav-about', 'nav-order', 'hero-tag', 'hero-desc', 'btn-place', 'btn-see', 
-                'form-title', 'form-btn', 'label-name', 'label-phone', 'label-date', 'label-msg',
-                'q1', 'a1', 'q2', 'a2', 'q3', 'a3', 'q4', 'a4'
-            ];
+            
+            // List of IDs - MUST match exactly what is in your HTML
+            const ids = ['nav-menu', 'nav-about', 'nav-order', 'hero-tag', 'hero-desc', 'btn-place', 'btn-see', 'form-title', 'form-desc', 'form-btn', 'label-name', 'label-phone', 'label-date', 'label-msg', 'form-disclaimer', 'q1', 'a1', 'q2', 'a2', 'q3', 'a3', 'q4', 'a4'];
+        
             ids.forEach(id => { 
                 const el = document.getElementById(id);
                 const key = id.replace(/-/g, '_');
-                if(el && data[key]) el.innerText = data[key]; 
+                if(el && data[key]) {
+                    el.innerText = data[key];
+                    // Fix for Mobile: If Hindi, make it easier to read
+                    if(lang === 'hi') {
+                        el.style.fontSize = id.includes('btn') ? '1.25rem' : ''; 
+                        el.style.fontWeight = '600';
+                    } else {
+                        el.style.fontSize = '';
+                        el.style.fontWeight = '';
+                    }
+                }
             });
         
             document.getElementById('hero-title').innerHTML = data.hero_title;
-    
-            // Target the hero buttons specifically for font resizing
-            const btnPlace = document.getElementById('btn-place');
-            const btnSee = document.getElementById('btn-see');
-            if (lang === 'hi') {
-                // Hindi: Increase size (text-xl) and keep it bold
-                btnPlace.classList.replace('text-semibold', 'text-bold');
-                btnPlace.classList.add('text-xl');
-                btnSee.classList.add('text-xl');
-            } else {
-                // English: Reset to standard size
-                btnPlace.classList.remove('text-xl');
-                btnSee.classList.remove('text-xl');
-            }
-            // Toggle UI Highlight
+        
+            // Toggle Button Highlighting
             const enBtn = document.getElementById('toggle-en');
             const hiBtn = document.getElementById('toggle-hi');
-            if (lang === 'hi') {
-                hiBtn.className = 'px-3 py-1.5 rounded-md bg-white shadow-sm text-black';
-                enBtn.className = 'px-3 py-1.5 rounded-md text-gray-400 hover:text-black';
+            if(lang === 'hi') {
+                hiBtn.className = 'px-2 py-1 rounded-md bg-white shadow-sm text-black';
+                enBtn.className = 'px-2 py-1 rounded-md text-gray-400';
             } else {
-                enBtn.className = 'px-3 py-1.5 rounded-md bg-white shadow-sm text-black';
-                hiBtn.className = 'px-3 py-1.5 rounded-md text-gray-400 hover:text-black';
+                enBtn.className = 'px-2 py-1 rounded-md bg-white shadow-sm text-black';
+                hiBtn.className = 'px-2 py-1 rounded-md text-gray-400';
             }
         }
     
