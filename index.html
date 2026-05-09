@@ -155,31 +155,31 @@
         <div class="divide-y divide-gray-200 border-t border-gray-200">
             <div class="faq-item py-6 cursor-pointer group" onclick="this.classList.toggle('active')">
                 <div class="flex justify-between items-center font-medium text-xl">
-                    <span>How far in advance should I order?</span>
+                    <span id="q1">How far in advance should I order?</span>
                     <span class="faq-icon transition-transform duration-300 text-2xl">+</span>
                 </div>
-                <div class="faq-content text-gray-500 mt-4">We recommend booking 3 days in advance.</div>
+                <div id="a1" class="faq-content text-gray-500 mt-4">We recommend booking 3 days in advance.</div>
             </div>
             <div class="faq-item py-6 cursor-pointer group" onclick="this.classList.toggle('active')">
                 <div class="flex justify-between items-center font-medium text-xl">
-                    <span>Do you offer delivery?</span>
+                    <span id="q2">Do you offer delivery?</span>
                     <span class="faq-icon transition-transform duration-300 text-2xl">+</span>
                 </div>
-                <div class="faq-content text-gray-500 mt-4">We deliver across Asansol. Contact us for charges based on distance.</div>
+                <div id="a2" class="faq-content text-gray-500 mt-4">We deliver across Asansol. Contact us for charges based on distance.</div>
             </div>
             <div class="faq-item py-6 cursor-pointer group" onclick="this.classList.toggle('active')">
                 <div class="flex justify-between items-center font-medium text-xl">
-                    <span>Can you accommodate allergies?</span>
+                    <span id="q3">Can you accommodate allergies?</span>
                     <span class="faq-icon transition-transform duration-300 text-2xl">+</span>
                 </div>
-                <div class="faq-content text-gray-500 mt-4">Please contact us for specific dietary needs.</div>
+                <div id="a3" class="faq-content text-gray-500 mt-4">Please contact us for specific dietary needs.</div>
             </div>
             <div class="faq-item py-6 cursor-pointer group" onclick="this.classList.toggle('active')">
                 <div class="flex justify-between items-center font-medium text-xl">
-                    <span>How do I pay?</span>
+                    <span id="q4">How do I pay?</span>
                     <span class="faq-icon transition-transform duration-300 text-2xl">+</span>
                 </div>
-                <div class="faq-content text-gray-500 mt-4">We accept UPI and cash.</div>
+                <div id="a4" class="faq-content text-gray-500 mt-4">We accept UPI and cash.</div>
             </div>
         </div>
     </section>
@@ -194,25 +194,25 @@
                 <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
                 
                 <div>
-                    <label class="block text-xs font-semibold uppercase tracking-[0.1em] text-gray-400 mb-2">Your Name</label>
+                    <label id="label-name" class="block text-xs font-semibold uppercase tracking-[0.1em] text-gray-400 mb-2">Your Name</label>
                     <input type="text" name="name" placeholder="John Doe" required 
                         class="w-full bg-gray-50 border border-gray-100 rounded-xl p-4 text-base focus:ring-2 focus:ring-black outline-none transition">
                 </div>
     
                 <div>
-                    <label class="block text-xs font-semibold uppercase tracking-[0.1em] text-gray-400 mb-2">Phone Number</label>
+                    <label id="label-phone" class="block text-xs font-semibold uppercase tracking-[0.1em] text-gray-400 mb-2">Phone Number</label>
                     <input type="tel" name="phone" required pattern="[0-9]{10}"
                         class="w-full bg-gray-50 border border-gray-100 rounded-xl p-4 text-base focus:ring-2 focus:ring-black outline-none transition">
                 </div>
     
                 <div>
-                    <label class="block text-xs font-semibold uppercase tracking-[0.1em] text-gray-400 mb-2">When do you need it?</label>
+                    <label id="label-date" class="block text-xs font-semibold uppercase tracking-[0.1em] text-gray-400 mb-2">When do you need it?</label>
                     <input type="date" name="date" required 
                         class="w-full bg-gray-50 border border-gray-100 rounded-xl p-4 text-base focus:ring-2 focus:ring-black outline-none transition cursor-pointer">
                 </div>
     
                 <div>
-                    <label class="block text-xs font-semibold uppercase tracking-[0.1em] text-gray-400 mb-2">What would you like to order?</label>
+                    <label id="label-msg" class="block text-xs font-semibold uppercase tracking-[0.1em] text-gray-400 mb-2">What would you like to order?</label>
                     <textarea name="message" rows="4" placeholder="Tell us about the occasion, preferred flavors, and any design inspiration..." required 
                         class="w-full bg-gray-50 border border-gray-100 rounded-xl p-4 text-base focus:ring-2 focus:ring-black outline-none transition resize-none"></textarea>
                 </div>
@@ -238,17 +238,29 @@
                 hero_title: "Sweet treats, <br class='hidden md:block'> baked with love.",
                 hero_desc: "KrazzyCakes is a home bakery crafting custom cakes, cupcakes, and cookies for every occasion. Small-batch, big flavor.",
                 btn_place: "Place an order", btn_see: "See the menu",
-                form_title: "Place an order", form_desc: "Tell us what you're dreaming of and we'll get back within 2 hours.",
-                form_btn: "Send Request"
+                // Form
+                label_name: "Your Name", label_phone: "Phone Number", label_date: "When do you need it?", label_msg: "What would you like to order?",
+                form_title: "Place an order", form_btn: "Send Request",
+                // FAQs
+                q1: "How far in advance should I order?", a1: "We recommend booking 3 days in advance.",
+                q2: "Do you offer delivery?", a2: "We deliver across Asansol. Contact us for charges based on distance.",
+                q3: "Can you accommodate allergies?", a3: "Please contact us for specific dietary needs.",
+                q4: "How do I pay?", a4: "We accept UPI and cash."
             },
             hi: {
                 nav_menu: "मेन्यू", nav_about: "बारे में", nav_order: "अभी ऑर्डर करें",
-                hero_tag: "📍 पश्चिम बंगाल के आसनसोल में डिलीवरी सेवा उपलब्ध",
+                hero_tag: "📍 आसनसोल में डिलीवरी",
                 hero_title: "प्यार से बने, <br class='hidden md:block'> मिठास भरे पल।",
                 hero_desc: "KrazzyCakes एक होम बेकरी है जहाँ हर अवसर के लिए बेहतरीन केक और कुकीज़ प्यार से बनाए जाते हैं।",
                 btn_place: "ऑर्डर करें", btn_see: "मेन्यू देखें",
-                form_title: "ऑर्डर का विवरण", form_desc: "हमें बताएं कि आपको क्या चाहिए और हम 2 घंटे में आपसे संपर्क करेंगे।",
-                form_btn: "ऑर्डर भेजें"
+                // Form
+                label_name: "आपका नाम", label_phone: "फ़ोन नंबर", label_date: "आपको कब चाहिए?", label_msg: "आप क्या ऑर्डर करना चाहेंगे?",
+                form_title: "ऑर्डर दें", form_btn: "ऑर्डर भेजें",
+                // FAQs
+                q1: "मुझे कितने समय पहले ऑर्डर देना चाहिए?", a1: "हम 3 दिन पहले बुकिंग करने की सलाह देते हैं।",
+                q2: "क्या आप डिलीवरी देते हैं?", a2: "हम पूरे आसनसोल में डिलीवरी देते हैं। शुल्क दूरी पर आधारित होंगे।",
+                q3: "क्या आप एलर्जी का ध्यान रखते हैं?", a3: "विशेष आहार संबंधी जरूरतों के लिए कृपया हमसे संपर्क करें।",
+                q4: "मैं भुगतान कैसे करूं?", a4: "हम UPI और नकद (Cash) स्वीकार करते हैं।"
             }
         };
     
@@ -258,8 +270,18 @@
             
             const data = translations[lang];
             // Apply text swaps
-            const ids = ['nav-menu', 'nav-about', 'nav-order', 'hero-tag', 'hero-desc', 'btn-place', 'btn-see', 'form-title', 'form-desc', 'form-btn'];
-            ids.forEach(id => { if(document.getElementById(id)) document.getElementById(id).innerText = data[id.replace(/-/g, '_')]; });
+            // Updated ID list to include everything
+            const ids = [
+                'nav-menu', 'nav-about', 'nav-order', 'hero-tag', 'hero-desc', 'btn-place', 'btn-see', 
+                'form-title', 'form-btn', 'label-name', 'label-phone', 'label-date', 'label-msg',
+                'q1', 'a1', 'q2', 'a2', 'q3', 'a3', 'q4', 'a4'
+            ];
+            ids.forEach(id => { 
+                const el = document.getElementById(id);
+                const key = id.replace(/-/g, '_');
+                if(el && data[key]) el.innerText = data[key]; 
+            });
+        
             document.getElementById('hero-title').innerHTML = data.hero_title;
     
             // Target the hero buttons specifically for font resizing
