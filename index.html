@@ -221,13 +221,27 @@
         <p>© 2026 KrazzyCakes — Baked with love at home.</p>
     </footer>
     <script>
-      // This listener runs every time the page is shown (even from the 'Back' button)
-      window.addEventListener('pageshow', function(event) {
-        const orderForm = document.getElementById('order-form');
-        if (orderForm) {
-          orderForm.reset();
-        }
-      });
+        // This listener runs every time the page is shown (even from the 'Back' button)
+        window.addEventListener('pageshow', function(event) {
+            const orderForm = document.getElementById('order-form');
+            if (orderForm) {
+              orderForm.reset();
+            }
+        });
+        window.addEventListener('pageshow', function(event) {
+            const orderForm = document.getElementById('order-form');
+            if (orderForm) {
+              orderForm.reset();
+            }
+        
+            // --- NEW: Prevent selecting past dates ---
+            const dateInput = document.querySelector('input[type="date"]');
+            if (dateInput) {
+              // Sets the minimum selectable date to exactly today
+              dateInput.min = new Date().toISOString().split("T")[0];
+            }
+            // ------------------------------------------
+        });
     </script>
     <a href="https://wa.me/919647081475" target="_blank" 
        class="fixed bottom-8 right-8 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center group">
